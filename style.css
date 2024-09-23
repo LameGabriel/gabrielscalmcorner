@@ -1,103 +1,234 @@
-/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-header {
-    background-color: #0a0d12;
-    color: rgb(40, 230, 182);
-    padding: 1rem;
-    text-align: center;
+html, body {
+    height: 100%;
 }
 
 body {
-
-    text-align: center;
     font-family: Arial, sans-serif;
-    background-color: rgba(16, 21, 25);
-    color: rgb(40, 230, 182);
-    line-height: 1.6;
+    color: rgb(231, 29, 29);
+    text-align: center;
+    background-image: url('images/back.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    opacity: 1;
 }
+
+header {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(40, 230, 182);
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
 
 main {
-    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
+
+.arrow-btn {
+    position: absolute;
+    background-color: rgba(78, 76, 174, 0.8);
+    color: rgb(161, 137, 228);
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#up-arrow {
+    top: 20px;          
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#left-arrow {
+    left: 1070px;            
+    top: 50%;             
+    transform: translateY(-50%); 
+    padding-left: 10px;     
+}
+
+#right-arrow {
+    right: 1070px;           
+    top: 50%;              
+    transform: translateY(-50%); 
+    padding-left: 10px;    
+}
+
+
+
+#down-arrow {
+    bottom: 20px;       
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.arrow-btn:hover {
+    background-color: rgb(176, 50, 226);
+}
+
+/* Footer */
 footer {
-    background-color: #0a0d12;
+    background-color: rgba(0, 0, 0, 0.5);
     color: rgb(40, 230, 182);
     text-align: center;
     padding: 1rem;
+    width: 100%;
+}
+
+
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Fullscreen container */
+#main-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 1;  /* Initial opacity for the fade-out effect */
+    transition: opacity 2s ease-in-out; /* Smooth transition on opacity change */
+}
+
+/* Fade-in image */
+.fade {
     position: absolute;
-    bottom: 0;
+    color: rgb(169, 55, 184);
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: fadeInImage 3s forwards ease-in-out;
 }
 
-#content {
-    margin-top: 2rem;
+.fade-in-message {
+    position: relative;
+    text-align: center;
+    color: rgb(255, 251, 0);
+    z-index: 1;
+    opacity: 0;
+    animation: fadeInMessage 5s forwards;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray background */
+    padding: 1rem; /* Adds some space around the text */
+    border-radius: 10px; /* Optional: rounded corners */
+    display: inline-block; /* Ensure the background wraps tightly around the text */
+    transform: translate(20px, -300px); /* Moves the text right by 30px and up by 200px */
 }
 
-h1 {
-    font-size: 2.5rem;
+
+
+/* Fade-in later (with delay) */
+.fade-in-later {
+    opacity: 0;
+    animation: fadeInLater 2s 2s forwards;
 }
 
-p {
-    font-size: 1.2rem;
+/* Image fade-in animation */
+@keyframes fadeInImage {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
-h2 {
-    color: #4CAF50;
-    margin-bottom: 1rem;
+/* Message fade-in animation */
+@keyframes fadeInMessage {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
-form {
-    margin-top: 1rem;
+/* Delayed fade-in animation */
+@keyframes fadeInLater {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
-input[type="text"],
-input[type="email"] {
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    max-width: 400px;
+.gradient-box {
+    background: linear-gradient(to right, rgba(16, 157, 192, 0.7), rgba(0, 0, 255, 0.7));
+    padding: 20px; /* Adds space inside the box */
+    border-radius: 15px; /* Optional: Rounds the corners */
+    display: inline-block; /* Keeps the box just around the text */
+    color: white; /* Text color */
+    margin-top: 20px; /* Adds some spacing at the top */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: Adds shadow for a subtle effect */
+    background: linear-gradient(to right, rgba(255, 255, 0, 0.7), rgba(0, 128, 128, 0.7));
+    background: linear-gradient(to bottom, rgba(209, 142, 142, 0.7), rgba(0, 0, 255, 0.7));
+
+
 }
 
-input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    cursor: pointer;
+/* Positioning the arrow in the center left */
+#back-arrow {
+        left: -690px;            
+        top: 50%;             
+        transform: translateY(-50%); 
+        padding-left: 10px;     
+    }
+
+#third-arrow {
+    top: 20px;          
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-input[type="submit"]:hover {
-    background-color: #45a049;
+#hehe-arrow {
+    bottom: 20px;          
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-/* Style for the profile image */
-#profile-img {
-    max-width: 1000px;  /* Adjust the size */
-    display: block;
-    margin: 2rem auto;  /* Centers the image */
-}
-
-/* Style for the "Next" button */
-#next-button {
-    background-color: rgb(76, 174, 79);
-    color: white;
-    padding: 0.7rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 2rem;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#next-button:hover {
-    color: rgb(207, 43, 38);
+#wee-arrow {
+    position: absolute; /* Make sure it's positioned relative to its parent container */
+    right: -706px; /* Move it to the right side by 20px from the right edge */
+    top: 50%; /* Vertically center it */
+    transform: translateY(-50%); /* Adjust for perfect vertical centering */
+    padding: 10px; /* Optional: add padding */
 }
