@@ -4,22 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fourth Page</title>
+    <title>Streamers Page</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        
+        body {
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1, h2 {
+            font-size: 16px;
+        }
+
+        p, ul, li {
+            font-size: 12px;
+        }
+
+        a {
+            font-size: 12px;
+        }
+
+        /* Flexbox layout to align streams side by side */
+        .streams-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stream-box {
+            width: 48%;
+        }
+
+        .stream-header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        /* Flexbox adjustment for smaller screens */
+        @media (max-width: 768px) {
+            .streams-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stream-box {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
+    
 
     <main>
         <div class="gradient-box">
-            <h1>Welcome to the Third Page</h1>
-            <p>Work In Progress</p>
-            <p>This one will be the twitch.tv and youtube recommendations integration</p>
+        <h1 class="stream-header">Twitch Streams</h1>
+        <div class="streams-container">
+            <!-- loltyler1's Stream -->
+            <div class="stream-box">
+                <h2 class="stream-header">loltyler1's Stream</h2>
+                <div id="twitch-profile-loltyler1">
+                    <img id="profile-image-loltyler1" alt="Profile Image" width="100">
+                </div>
+                <ul id="stream-list-loltyler1"></ul>
+                <!-- Twitch Embed for loltyler1 -->
+                <div id="twitch-embed-loltyler1" style="width: 100%; height: 600px;"></div>
+            </div>
+
+            <!-- Quantum's Stream -->
+            <div class="stream-box">
+                <h2 class="stream-header">Quantum's Stream</h2>
+                <div id="twitch-profile-quantum">
+                    <img id="profile-image-quantum" alt="Profile Image" width="100">
+                    <p id="profile-description-quantum"></p>
+                </div>
+                <ul id="stream-list-quantum"></ul>
+                <!-- Twitch Embed for Quantum -->
+                <div id="twitch-embed-quantum" style="width: 100%; height: 600px;"></div>
+            </div>
         </div>
 
-        <div id="arrow-nav">
-            <a href="Main.html" id="third-arrow" class="arrow-btn">&#x2B06;</a> <!-- Changed href to main.html -->
+        <div id="arrow-nav" style="text-align: center; margin-top: 20px;">
+            <a href="Main.html" id="third-arrow" class="arrow-btn">&#x2B06;</a> 
         </div>
     </main>
 
+    <!-- Load the Twitch embed script only once -->
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+    <!-- Link your third.js file -->
+    <script src="third.js"></script>
+    
+    
 </body>
 </html>
