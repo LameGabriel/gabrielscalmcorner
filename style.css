@@ -1,3 +1,4 @@
+/* Reset Styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,11 +9,12 @@ html, body {
     height: 100%;
 }
 
+/* Body Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'OpenDyslexic', Arial, sans-serif;
     color: rgb(231, 29, 29);
     text-align: center;
-    background-image: url('images/back.png'); 
+    background-image: url('images/back.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -23,8 +25,184 @@ body {
     align-items: center;
     min-height: 100vh;
     opacity: 1;
+    overflow: hidden;
 }
 
+/* Font Import */
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('fonts/OpenDyslexic-Regular.woff') format('truetype');
+}
+
+/* Animation Classes */
+.slide-out-to-main {
+    animation: slideOutToMain 0.6s ease-in-out forwards;
+}
+
+body.slide-out-up {
+    animation: slideOutUp 0.6s forwards;
+}
+
+body.slide-out-down {
+    animation: slideOutDown 0.6s forwards;
+}
+
+body.slide-out-left {
+    animation: slideOutLeft 0.6s forwards;
+}
+
+body.slide-out-right {
+    animation: slideOutRight 0.6s forwards;
+}
+
+body.slide-in-from-bottom {
+    animation: slideInFromBottom 0.6s ease-out forwards;
+}
+
+body.slide-in-from-top {
+    animation: slideInFromTop 0.6s ease-out forwards;
+}
+
+body.slide-in-from-left {
+    animation: slideInFromLeft 0.6s ease-out forwards;
+}
+
+body.slide-in-from-right {
+    animation: slideInFromRight 0.6s ease-out forwards;
+}
+
+body.fade-in {
+    animation: fadeInAnimation 1.5s ease-in forwards;
+}
+
+/* Keyframes for Animations */
+@keyframes slideOutToMain {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutUp {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes slideOutDown {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes slideOutLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slideOutRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInImage {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInMessage {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInLater {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Header and Footer Styles */
 header {
     background-color: rgba(0, 0, 0, 0.5);
     color: rgb(40, 230, 182);
@@ -33,18 +211,27 @@ header {
     width: 100%;
 }
 
+footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(40, 230, 182);
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+}
 
+/* Main Section Styles */
 main {
     flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
 }
 
-
+/* Arrow Button Styles */
 .arrow-btn {
-    position: absolute;
+    position: fixed;
     background-color: rgba(78, 76, 174, 0.8);
     color: rgb(161, 137, 228);
     padding: 10px;
@@ -56,65 +243,99 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
-
-
-#up-arrow {
-    top: 20px;          
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#left-arrow {
-    left: 1450px;            
-    top: 50%;             
-    transform: translateY(-50%); 
-    padding-left: 10px;     
-}
-
-#right-arrow {
-    right: 1450px;           
-    top: 50%;              
-    transform: translateY(-50%); 
-    padding-left: 10px;    
-}
-
-
-
-#down-arrow {
-    bottom: 20px;       
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 
 .arrow-btn:hover {
     background-color: rgb(176, 50, 226);
 }
 
-/* Footer */
-footer {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: rgb(40, 230, 182);
-    text-align: center;
-    padding: 1rem;
+/* Arrow Button Positions */
+#up-arrow {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#left-arrow {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    padding-left: 10px;
+}
+
+#right-arrow {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    padding-left: 10px;
+}
+
+#down-arrow {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#back-arrow {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 10px;
+}
+
+#third-arrow {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#hehe-arrow {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#wee-arrow {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+}
+
+/* Page Styles */
+.page {
+    position: absolute;
     width: 100%;
-}
-
-
-/* Reset styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
     height: 100%;
-    overflow: hidden;
+    top: 0;
+    left: 100%;
+    transition: transform 0.6s ease-in-out;
 }
 
-/* Fullscreen container */
+.page.active {
+    transform: translateX(-100%);
+}
+
+.page.slide-in-left {
+    animation: slideInLeft 0.6s forwards;
+}
+
+.page.slide-out-left {
+    animation: slideOutLeft 0.6s forwards;
+}
+
+.page.slide-in-right {
+    animation: slideInRight 0.6s forwards;
+}
+
+.page.slide-out-right {
+    animation: slideOutRight 0.6s forwards;
+}
+
+/* Main Page Styles */
 #main-page {
     position: relative;
     width: 100%;
@@ -124,11 +345,11 @@ html, body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    opacity: 1;  /* Initial opacity for the fade-out effect */
-    transition: opacity 2s ease-in-out; /* Smooth transition on opacity change */
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
 }
 
-/* Fade-in image */
+/* Fade Styles */
 .fade {
     position: absolute;
     color: rgb(169, 55, 184);
@@ -146,104 +367,28 @@ html, body {
     z-index: 1;
     opacity: 0;
     animation: fadeInMessage 5s forwards;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray background */
-    padding: 1rem; /* Adds some space around the text */
-    border-radius: 10px; /* Optional: rounded corners */
-    display: inline-block; /* Ensure the background wraps tightly around the text */
-    transform: translate(20px, -300px); /* Moves the text right by 30px and up by 200px */
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 10px;
+    display: inline-block;
+    transform: translate(20px, -300px);
 }
 
-
-
-/* Fade-in later (with delay) */
-.fade-in-later {
-    opacity: 0;
-    animation: fadeInLater 2s 2s forwards;
-}
-
-/* Image fade-in animation */
-@keyframes fadeInImage {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Message fade-in animation */
-@keyframes fadeInMessage {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Delayed fade-in animation */
-@keyframes fadeInLater {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
+/* Gradient Box Styles */
 .gradient-box {
     background: linear-gradient(to right, rgba(16, 157, 192, 0.7), rgba(0, 0, 255, 0.7));
-    padding: 20px; /* Adds space inside the box */
-    border-radius: 15px; /* Optional: Rounds the corners */
-    display: inline-block; /* Keeps the box just around the text */
-    color: white; /* Text color */
-    margin-top: 20px; /* Adds some spacing at the top */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: Adds shadow for a subtle effect */
-    background: linear-gradient(to right, rgba(255, 255, 0, 0.7), rgba(0, 128, 128, 0.7));
+    padding: 20px;
+    border-radius: 15px;
+    display: inline-block;
+    color: white;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     background: linear-gradient(to bottom, rgba(209, 142, 142, 0.7), rgba(0, 0, 255, 0.7));
-
-
 }
 
-/* Positioning the arrow in the center left */
-#back-arrow {
-        left: -400px;            
-        top: 50%;             
-        transform: translateY(-50%); 
-        padding-left: 10px;     
-    }
-
-#third-arrow {
-    top: 20px;          
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#hehe-arrow {
-    bottom: 20px;          
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#wee-arrow {
-    position: absolute; /* Make sure it's positioned relative to its parent container */
-    right: -506px; /* Move it to the right side by 20px from the right edge */
-    top: 50%; /* Vertically center it */
-    transform: translateY(-50%); /* Adjust for perfect vertical centering */
-    padding: 10px; /* Optional: add padding */
-}
-
-@font-face {
-    font-family: 'OpenDyslexic';
-    src: url('fonts/OpenDyslexic-Regular.woff') format('truetype');
-}
-
-body {
-    font-family: 'OpenDyslexic', sans-serif;
-}
-
+/* Canvas Styles */
 canvas {
-    background-color: #1e1e1e; /* Darker background */
+    background-color: #1e1e1e;
     display: block;
     margin: 0 auto;
     border: 1px solid #000;

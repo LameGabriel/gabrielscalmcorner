@@ -6,17 +6,119 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Game Integration</title>
     <link rel="stylesheet" href="style.css">
-    <div class="gradient-box">
-    <p>Work In Progress</p>
-</div>
+    <style>
+        /* Sliding animations for the entire body */
+        body.slide-out-left {
+            animation: slideOutLeft 1.05s forwards;
+        }
+
+        body.slide-in-from-right {
+            animation: slideInFromRight 1.05s forwards;
+        }
+
+        body.slide-out-right {
+            animation: slideOutRight 1.05s forwards;
+        }
+
+        /* Keyframes for sliding animations */
+        @keyframes slideOutUp {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        @keyframes slideOutDown {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        @keyframes slideOutLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes slideOutRight {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Keyframes for sliding in animations */
+        @keyframes slideInFromBottom {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* CSS for arrow animation */
+        #arrow-nav {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            opacity: 0;
+            animation: slideInFromRight 1s ease-out 1s forwards;
+        }
+    </style>
 </head>
-
-<body>
-
+<body class="slide-in-from-right">
     <main>
-        
         <div class="gradient-box">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <p>Work In Progress</p>
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+        </div>
         
         <script>
             // ===============================
@@ -533,10 +635,35 @@
             // Start the game loop
             update();
         </script>
-        <div id="arrow-nav">
-            <a href="Main.html" id="wee-arrow" class="arrow-btn" aria-label="Go to main page">&#x27A1;</a> 
-        </div>
-    </main>
+<div id="arrow-nav">
+    <a href="Main.html" id="wee-arrow" class="arrow-btn" aria-label="Go to main page">➡</a>
+</div>
+</main>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("JavaScript is loaded and running");
+
+        // Selecting the arrow button
+        const weeArrow = document.getElementById('wee-arrow');
+
+        // Adding event listener to arrow
+        weeArrow.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action
+            console.log("Arrow clicked, initiating slideOutLeft animation...");
+
+            // Remove existing slide classes (if any)
+            document.body.classList.remove('slide-in-from-right', 'slide-out-right', 'slide-in-from-left', 'slide-out-left');
+
+            // Add slide-out-left animation class to the body
+            document.body.classList.add('slide-out-left');
+
+            // Set a timeout to navigate after the animation completes
+            setTimeout(function() {
+                window.location.href = weeArrow.href; 
+            }, 600); // Match this with the duration of the CSS animation
+        });
+    });
+</script>
 </body>
 </html>
