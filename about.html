@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Gabriel</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body.slide-out-up {
+            animation: slideOutUp 0.6s forwards;
+        }
+
+        @keyframes slideOutUp {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        #arrow-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: slide-up 1s ease-out 1s forwards;
+        }
+
+        @keyframes slide-up {
+            0% {
+                transform: translateX(-50%) translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="slide-in-from-bottom">
+    <main>
+        <div class="gradient-box">
+            <iframe width="1280" height="720" src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1" 
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+        </div>
+    </main>
+    
+    <div id="arrow-nav">
+        <a href="Main.html" id="hehe-arrow" class="arrow-btn" aria-label="Go to main page">
+            &#x2B07;
+        </a> 
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const heheArrow = document.getElementById('hehe-arrow');
+
+            heheArrow.addEventListener('click', function(event) {
+                event.preventDefault();
+                document.body.classList.add('slide-out-up');
+                setTimeout(function() {
+                    window.location.href = heheArrow.href; 
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fourth Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        body.slide-out-right {
+            animation: slideOutRight 1.05s forwards;
+        }
+
+        @keyframes slideOutRight {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        #arrow-nav {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            opacity: 0;
+            animation: slide-left 1s ease-out 1s forwards;
+        }
+
+        @keyframes slide-left {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+    </style>
+</head>
+<body class="slide-in-from-left">
+    <main>
+        <div class="gradient-box">
+            <h1>Grades / Activity integration</h1>
+            <p>This is super scary because it will use my usename and password for login.<br> I need to figure out security before I upload this portion</p>
+            <img src="images/Security.png" height="524" width="1026">
+        </div>
+    
+    <div id="arrow-nav">
+        <a href="Main.html" id="back-arrow" class="arrow-btn" aria-label="Go back to main page">&#x2B05;</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const backArrow = document.getElementById('back-arrow');
+
+            backArrow.addEventListener('click', function(event) {
+                event.preventDefault(); 
+                                
+                document.body.classList.add('slide-out-right');
+                
+                setTimeout(function() {
+                    window.location.href = backArrow.href; 
+                }, 600); 
+            });
+        });
+    </script>
+</body>
+</html>

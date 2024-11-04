@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamers Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=OpenDyslexic&display=swap">
+    <style>
+        /* Sliding animations for the body */
+        body.slide-out-down { animation: slideOutDown 0.6s forwards; }
+        body.slide-in-from-top { animation: slideInFromTop 0.6s forwards; }
+        body.slide-out-up { animation: slideOutUp 0.6s forwards; }
+        body.slide-in-from-bottom { animation: slideInFromBottom 0.6s forwards; }
+
+        @keyframes slideOutDown { 0% { transform: translateY(0); } 100% { transform: translateY(100%); } }
+        @keyframes slideInFromTop { 0% { transform: translateY(-100%); } 100% { transform: translateY(0); } }
+        @keyframes slideOutUp { 0% { transform: translateY(0); } 100% { transform: translateY(-100%); } }
+        @keyframes slideInFromBottom { 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }
+
+        /* CSS for arrow navigation */
+        #arrow-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        body {
+            font-size: 12px;
+            font-family: 'OpenDyslexic', Arial, sans-serif;
+        }
+
+        h1, h2 {
+            font-size: 14px;
+        }
+
+        p, ul, li, a {
+            font-size: 10px;
+        }
+
+        /* Flexbox layout for streams */
+        .streams-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .stream-box {
+            width: 45%;
+        }
+
+        .stream-header {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        /* Flexbox adjustment for smaller screens */
+        @media (max-width: 768px) {
+            .streams-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stream-box {
+                width: 75%;
+            }
+        }
+
+        /* Main content styling */
+        main {
+            max-width: 85%;
+            margin: 0 auto;
+        }
+
+        /* Gradient box styling */
+        .gradient-box {
+            margin: 100px auto 20px;
+            padding: 15px;
+            height: 750px;
+            width: 3000px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="gradient-box">
+            <h1 class="stream-header">Twitch Streams</h1>
+            <div class="streams-container">
+                <!-- loltyler1's Stream -->
+                <div class="stream-box">
+                    <h2 class="stream-header">loltyler1's Stream</h2>
+                    <div id="twitch-profile-loltyler1">
+                        <img id="profile-image-loltyler1" alt="Profile Image" width="80">
+                    </div>
+                    <ul id="stream-list-loltyler1"></ul>
+                    <div id="twitch-embed-loltyler1" style="width: 100%; height: 300px;"></div>
+                </div>
+
+                <!-- Quantum's Stream -->
+                <div class="stream-box">
+                    <h2 class="stream-header">Quantum's Stream</h2>
+                    <div id="twitch-profile-quantum">
+                        <img id="profile-image-quantum" alt="Profile Image" width="80">
+                        <p id="profile-description-quantum"></p>
+                    </div>
+                    <ul id="stream-list-quantum"></ul>
+                    <div id="twitch-embed-quantum" style="width: 100%; height: 225px;"></div>
+                </div>
+            </div>
+        </div>
+        <div id="arrow-nav">
+            <a href="Main.html" id="third-arrow" class="arrow-btn" aria-label="Go back to main page">⬆</a> 
+        </div>
+    </main>
+
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script src="third.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("JavaScript is loaded and running");
+
+            // Add slide-in-from-top animation when first entering the page
+            if (performance && performance.navigation.type !== performance.navigation.TYPE_BACK_FORWARD) {
+                document.body.classList.add('slide-in-from-top');
+            }
+
+            // Add slide-in-from-bottom animation when navigating back
+            if (performance && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD) {
+                document.body.classList.add('slide-in-from-bottom');
+            }
+
+            // Arrow button event listener for navigation
+            const thirdArrow = document.getElementById('third-arrow');
+            thirdArrow.addEventListener('click', function(event) {
+                event.preventDefault();
+                document.body.classList.add('slide-out-up');
+                setTimeout(function() {
+                    window.location.href = thirdArrow.href; 
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>
